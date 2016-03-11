@@ -11,15 +11,15 @@ class TestMerchant < MiniTest::Test
 
   def setup
     options = {
-      'tr_date' => '2016-03-11', 
-      'merchant_id' => 1,
-      'item_id' => 1,
-      'amount' => 12.25
+      'id' => 1,
+      'name' => 'Tesco'
     }
 
-    @merchant = Transaction.new( options)
+    @merchant = Merchant.new( options)
   end
 
-
+  def test_get_name
+    assert_equal('Tesco', @merchant.name)
+  end
 
 end
