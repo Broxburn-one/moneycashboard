@@ -1,6 +1,6 @@
-DROP TABLE  merchants;
-DROP TABLE  items;
-DROP TABLE  transactions;
+DROP TABLE  merchants CASCADE;
+DROP TABLE  items CASCADE;
+DROP TABLE  transactions CASCADE;
 
 
 CREATE TABLE merchants (
@@ -15,7 +15,7 @@ CREATE TABLE items (
 
 CREATE TABLE transactions (
   id serial4 primary key,
-  transaction_date  date,
+  tr_date  date,
   merchant_id int4 references merchants(id),
   item_id int4 references items(id),
   amount decimal(12,2)
@@ -36,3 +36,10 @@ INSERT INTO items(name) VALUES ('Juice/Soft Drink/Milk');
 INSERT INTO items(name) VALUES ('White Goods');
 INSERT INTO items(name) VALUES ('Utilities');
 INSERT INTO items(name) VALUES ('Transport');
+
+
+
+
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 1, 1, 20.25);
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 2, 2, 2.50);
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 3, 3, 12.25);

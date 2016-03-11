@@ -13,4 +13,52 @@ class Merchant
     @name = options['name']
   end
 
+
+
+
+
+
+
+ def save()
+    sql = "INSERT INTO Merchants (name) VALUES ('#{ @name }')"
+    SqlRunner.run_sql( sql )
+    return last_entry()
+  end
+
+  def last_entry
+    sql = "SELECT * FROM Merchants ORDER BY id DESC limit 1;"
+    return Merchant.map_item(sql)
+  end
+
+
+
+  def self.all()
+    sql = "SELECT * FROM Merchants"
+    return Merchant.map_items(sql)
+  end
+
+  def self.delete_all 
+    sql = "DELETE FROM Merchants"
+    SqlRunner.run_sql(sql)
+  end
+
+  def self.map_items(sql)
+    merchant = SqlRunner.run_sql(sql)
+    result = merchant.map { |m| Merchant.new( m ) }
+    return result
+  end
+
+  def self.map_item(sql)
+    result = Merchant.map_items(sql)
+    return result.first
+  end
+
+end
+
+
+
+
+
+
+
 end
