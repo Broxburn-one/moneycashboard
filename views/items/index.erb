@@ -1,0 +1,12 @@
+<div class="content">
+
+<% @items.each do |item| %>
+
+<a href="/items/<%= item.id %>"><%= item.name %></a><br>
+
+<% end %>
+<br>
+<br>
+<a href="/">Back</a>
+
+</div>

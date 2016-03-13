@@ -25,12 +25,23 @@ class Item
     return Item.map_item(sql)
   end
 
+  # def merchants()
+  #   sql = "SELECT m.* FROM Merchants u INNER JOIN Transactions t ON t.merchant_id = m.id WHERE t.item_id = #{@id};"
+  #   return Merchant.map_items(sql)
+  # end
+  
 
+
+
+#  causing some problems with id
+  # def self.find(1)
   def self.find(id)
     sql = "SELECT * FROM Items WHERE id = #{id}"
+        result = SqlRunner.run_sql( sql )
     items = SqlRunner.run_sql( sql )    
-    return Item.new(items.first)
+    item = Item.new(result[0])
   end
+
 
 
   def self.all()
@@ -38,10 +49,16 @@ class Item
     return Item.map_items(sql)
   end
 
+
+  def update()
+    sql = "UPDATE items SET name = '#{ @name }' WHERE id = #{@id}"
+    return SqlRunner.run_sql( sql )
+  end
+
 #  create array of item objects
   def self.map_items(sql)
     item = SqlRunner.run_sql(sql)
-    result = item.map { |name| Item.new( name ) }
+    result = item.map { |n| Item.new( n ) }
     return result
   end
 
@@ -51,4 +68,8 @@ class Item
     return result.first
   end
 
+  def self.delete_all 
+    sql = "DELETE FROM Items"
+    SqlRunner.run_sql(sql)
+  end
 end

@@ -1,0 +1,15 @@
+<div class="content">
+
+  <h2>Edit Item</h2>
+
+  <form action="/items/<%= @item.id %>" method="post">
+    <label for="name">Item Name:</label>
+    <input type="text" name="name" id="name" value="<%= @item.name %>"><br>
+    
+
+    <input type='submit' value="Update Item">
+  </form>
+
+<a href="/items">Back to Items</a> 
+
+</div>

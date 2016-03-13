@@ -16,8 +16,8 @@ CREATE TABLE items (
 CREATE TABLE transactions (
   id serial4 primary key,
   tr_date  date,
+   item_id int4 references items(id), 
   merchant_id int4 references merchants(id),
-  item_id int4 references items(id),
   amount decimal(12,2)
 );
 
@@ -40,6 +40,6 @@ INSERT INTO items(name) VALUES ('Transport');
 
 
 
-INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 1, 1, 20.25);
-INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 2, 2, 2.50);
-INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 3, 3, 12.25);
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 5, 7, 20.25);
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 4, 6, 2.50);
+INSERT INTO transactions(tr_date, merchant_id, item_id, amount) VALUES ('2016-03-16', 1, 3, 12.25);

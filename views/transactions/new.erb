@@ -1,0 +1,26 @@
+<div>
+  
+<h3>Transactions: New</h3>
+  <form action="/transactions" method="post">
+
+    <label for="tr_date">Date:</label>
+    <input type="date" name="tr_date"><br>
+
+    <select name="merchant_id">
+    <% @merchants.each do |merchant| %>
+      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+    <% end %>
+    </select>
+    <select name="item_id">
+    <% @items.each do |item| %>
+      <option value="<%= item.id %>"><%= item.name %></option>
+    <% end %>
+    </select>
+
+    <label for="amount">Amount:</label>
+    <input type="number" step="any" name="amount"><br>
+
+      <input type='submit' value="Register a transaction">
+  </form>
+
+</div>

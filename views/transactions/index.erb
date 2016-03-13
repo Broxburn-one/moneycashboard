@@ -1,0 +1,20 @@
+<div>
+<h3>Transactions Listing</h3>
+<table>
+ <tr>
+    <th>Date</th>
+    <th>Item</th> 
+    <th>Merchant</th>
+    <th>Amount</th>
+  </tr>
+<% @transactions.each do |transactions| %>  
+  <tr>
+    <td><%= transactions.tr_date %> </td>
+    <td><%= transactions.item.name %> </td> 
+    <td><%= transactions.merchant.name %> </td>
+    <td><%= transactions.amount %> </td>
+  </tr>
+
+<% end %>
+</table>
+</div>

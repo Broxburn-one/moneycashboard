@@ -14,12 +14,7 @@ class Merchant
   end
 
 
-
-
-
-
-
- def save()
+  def save()
     sql = "INSERT INTO Merchants (name) VALUES ('#{ @name }')"
     SqlRunner.run_sql( sql )
     return last_entry()
@@ -31,11 +26,28 @@ class Merchant
   end
 
 
+  def self.find(id)
+    sql = "SELECT * FROM Merchants WHERE id = #{id}"
+    result = SqlRunner.run_sql( sql )
+    merchants = SqlRunner.run_sql( sql )    
+    merchant =  Merchant.new(result[0])
+  end
+
 
   def self.all()
     sql = "SELECT * FROM Merchants"
     return Merchant.map_items(sql)
   end
+
+  def update()
+    sql = "UPDATE merchants SET name='#{ @name }' WHERE id = #{@id}"
+    return SqlRunner.run_sql( sql )
+  end
+
+
+
+
+
 
   def self.delete_all 
     sql = "DELETE FROM Merchants"
@@ -52,13 +64,5 @@ class Merchant
     result = Merchant.map_items(sql)
     return result.first
   end
-
-end
-
-
-
-
-
-
 
 end
