@@ -13,7 +13,7 @@ end
 post '/transactions' do
   @transaction = Transaction.new(params)
   @transaction.save()
-  erb :"transactions/create"
+  erb :"transactions/show"
 end
 
 get '/transactions' do

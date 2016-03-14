@@ -1,0 +1,23 @@
+
+
+<table>
+  <tr>
+    <td>Date:</td>
+    <td><%= @transaction.date_format(@transaction.tr_date) %></td>
+   </tr>
+  <tr>
+    <td>Merchant:</td>
+    <td><%= @transaction.merchant.name() %></td>
+   </tr>
+   <tr>
+    <td>Item:</td>
+    <td><%= @transaction.item.name() %></td>
+   </tr>
+    <td>Details: &#163;</td>
+    <td><%= sprintf('%.2f', @transaction.amount()) %></td>
+   </tr>
+
+</table>
+
+<a href="/transactions">Back to Index</a> 
+  

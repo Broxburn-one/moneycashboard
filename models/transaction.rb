@@ -11,14 +11,6 @@ class Transaction
 
   def initialize( options )
     @id = options['id'].to_i
-    # ERROR: syntax error at or near "01" LINE 7: 1970-01-01 01:33:36 +0100
-    # date = t.to_date
-    # column "tr_date" is of type date but expression is of type integer LINE 7: 1970-01-01, ^ HINT: You will need to rewrite or cast the expression.
-    # @tr_date = Time.at(options['tr_date'].to_i).to_date
-
-    # @tr_date = date_format(options['tr_date'])
-
-    # @tr_date = Time.at(options['tr_date']).to_date
     @tr_date = options['tr_date']
     @merchant_id = options['merchant_id'].to_i
     @item_id = options['item_id'].to_i
@@ -26,11 +18,6 @@ class Transaction
 
     # @item = Item.find(options['item_id'])
     # @merchant = Merchant.find(options['merchant_id'])
-  end
-
-
-  def date_format(date)
-    Date.parse(date).strftime("%d-%m-%Y")
   end
 
   def item()
@@ -49,23 +36,26 @@ class Transaction
 
 #  this generates an error
   def save
- # binding.pry
- # nil
+
     sql = "INSERT INTO Transactions (
       tr_date,
       merchant_id,
       item_id,
       amount) 
       VALUES (
-        #{ @tr_date },
+        '#{ @tr_date }',
         #{ @merchant_id }, 
         #{ @item_id },
         #{ @amount }
       )"
+#  NB tr_date above needs the string interpolation quotes or it thinks it's integer.
     SqlRunner.run_sql( sql )
   end
 
-
+ def date_format(date)
+    Date.parse(date).strftime("%d-%m-%Y")
+  end
+  
   def self.all
     sql = "SELECT * FROM transactions"
     transaction = SqlRunner.run_sql(sql)
@@ -77,6 +67,7 @@ class Transaction
     sql = "DELETE FROM  Transactions"
     SqlRunner.run_sql(sql)
   end
+
 
 
 end
