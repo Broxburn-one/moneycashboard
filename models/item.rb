@@ -25,23 +25,12 @@ class Item
     return Item.map_item(sql)
   end
 
-  # def merchants()
-  #   sql = "SELECT m.* FROM Merchants u INNER JOIN Transactions t ON t.merchant_id = m.id WHERE t.item_id = #{@id};"
-  #   return Merchant.map_items(sql)
-  # end
-  
-
-
-
-#  causing some problems with id
-  # def self.find(1)
   def self.find(id)
     sql = "SELECT * FROM Items WHERE id = #{id}"
         result = SqlRunner.run_sql( sql )
     items = SqlRunner.run_sql( sql )    
     item = Item.new(result[0])
   end
-
 
 
   def self.all()

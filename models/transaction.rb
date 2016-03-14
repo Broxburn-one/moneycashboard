@@ -3,6 +3,8 @@ require('time')
 require('pry-byebug')
 require_relative('../db/sql_runner')
 
+require 'Date'
+
 
 class Transaction
 
@@ -15,14 +17,9 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i
     @item_id = options['item_id'].to_i
     @amount = options['amount'].to_f   # need to sort this out as float not recommended
-
-    # @item = Item.find(options['item_id'])
-    # @merchant = Merchant.find(options['merchant_id'])
   end
 
   def item()
-
-#  this @item_id is 1, 20.25] . WHY?
     Item.find(@item_id)
     sql = "SELECT * FROM Items where id = #{@item_id}"
     Item.map_item(sql)
@@ -34,7 +31,7 @@ class Transaction
     Merchant.map_item(sql)
   end
 
-#  this generates an error
+
   def save
 
     sql = "INSERT INTO Transactions (
@@ -55,9 +52,24 @@ class Transaction
  def date_format(date)
     Date.parse(date).strftime("%d-%m-%Y")
   end
-  
-  def self.all
-    sql = "SELECT * FROM transactions"
+
+  def update()
+    sql = "UPDATE Transactions SET 
+      tr_date = '#{ @tr_date }',
+      merchant_id = #{ @merchant_id }, 
+      item_id =  #{ @item_id },
+      amount = #{ @amount }
+     WHERE id = #{@id}"
+    
+    return SqlRunner.run_sql( sql )
+  end
+
+
+  def self.all()
+    date_from = Date.today.strftime("%Y-%m-01")  # 1st of the month
+    date_to = Date.today.strftime("%Y-%m-%d") 
+
+    sql = "SELECT * FROM transactions WHERE tr_date BETWEEN '#{date_from}' AND '#{date_to}' ORDER BY tr_date DESC"
     transaction = SqlRunner.run_sql(sql)
     result = transaction.map {  |t| Transaction.new(t)}
     return result
@@ -67,6 +79,42 @@ class Transaction
     sql = "DELETE FROM  Transactions"
     SqlRunner.run_sql(sql)
   end
+
+
+ def self.find(id)
+    sql = "SELECT * FROM Transactions WHERE id = #{id}"
+    result = SqlRunner.run_sql( sql )
+    transactions = SqlRunner.run_sql( sql )    
+    transaction =  Transaction.new(result[0])
+  end
+
+
+
+  def self.by_date(date_from, date_to=Date.today)
+#  summation of transaction table amounts; later acc to date range
+#  first of the month Date.parse(date).strftime("01-%m-%Y")
+    if !defined? date_from
+      date_from = Date.today.strftime("%Y-%m-01")   # 1st of the month
+    end
+    if !defined? date_to
+      date_to = Date.today.strftime("%Y-%m-%d") 
+    end
+# validation that date_from is BEFORE the date_to requires JS validaion or some other not available here?
+    sql = "SELECT * FROM TRANSACTIONS WHERE tr_date BETWEEN date_from AND date_to ORDER BY tr_date DESC"
+    transaction = SqlRunner.run_sql(sql)
+    result = transaction.map {  |t| Transaction.new(t)}
+    return result
+  end
+
+
+
+
+
+
+
+
+
+
 
 
 

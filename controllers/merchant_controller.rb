@@ -1,8 +1,8 @@
 require_relative('../models/item.rb')
 require_relative('../models/merchant.rb')
 
-get '/merchants' do
   #INDEX
+get '/merchants' do
   @merchants = Merchant.all()
   erb :"merchants/index"
 end

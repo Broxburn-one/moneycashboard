@@ -1,5 +1,16 @@
 <div>
 <h3>Transactions Listing</h3>
+<br>
+
+         <form action="">
+            Filter by date range (default: none):<br><br>
+            From:
+            <input type="date" name="filter"><br><br>
+            To:
+            <input type="date" name="filter" ><br><br>
+            <input type="submit"> 
+          </form>
+
 <table>
  <tr>
     <th>Date</th>
@@ -7,14 +18,19 @@
     <th>Merchant</th>
     <th>Amount (&#163;)</th>
   </tr>
-<% @transactions.each do |transactions| %>  
+
+<% summation = 0.00 %>
+<% @transactions.each do |transaction| %>  
   <tr>
-    <td><%= transactions.tr_date %> </td>
-    <td><%= transactions.item.name %> </td> 
-    <td><%= transactions.merchant.name %> </td>
-    <td><%=  sprintf('%.2f', transactions.amount) %> </td>
+    <td> <a href="/transactions/<%= transaction.id %>">  <%= transaction.tr_date %></a> </td>
+    <td><%= transaction.item.name %> </td> 
+    <td><%= transaction.merchant.name %> </td>
+    <td><%=  sprintf('%.2f', transaction.amount) %> </td>
+
   </tr>
+ <% summation += transaction.amount %>
 
 <% end %>
 </table>
+<p>Sum: &#163;  <%= sprintf('%.2f',summation) %></p>
 </div>
