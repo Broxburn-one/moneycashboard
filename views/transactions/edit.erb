@@ -1,48 +1,65 @@
-<div class="content">
+<h1 class="center-h">Edit Transaction</h1>
 
-  <h2>Edit Transaction</h2>
 
-<%= @transaction.id %>
+
+
+<div class="edit-transaction">
+
+
+
 
   <form action="/transactions/<%= @transaction.id %>" method="post">
     <label for="tr_date">Transaction Date:</label>
     <input type="date" name="tr_date" id="tr_date" value="<%= @transaction.tr_date %>"><br>
+    <br>
 
-<!--  <p> <%= @transaction.merchant.name %> </p>
- <p> <%= @transaction.item.name %> </p>
- <p> <%= @transaction.amount.to_s %> </p> -->
- 
-    <select name="merchant_id">
-      <% @merchants.each do |merchant| %> 
-      <% if merchant.id ==  @transaction.merchant.id %>
-         <option selected="selected" value="<%= merchant.id %>"><%= merchant.name %></option>
-      <% else %>
-         <option value="<%= merchant.id %>"><%= merchant.name %></option>
-       <% end %>
-      <% end %>
-    </select>
 
-    <select name="item_id">
-      <% @items.each do |item| %> 
-      <% if item.id ==  @transaction.item.id %>
+    <div class="blk">
+    <p>Merchant: 
+      <select  name="merchant_id">
+        <% @merchants.each do |merchant| %> 
+        <% if merchant.id ==  @transaction.merchant.id %>
+           <option selected="selected" value="<%= merchant.id %>"><%= merchant.name %></option>
+        <% else %>
+           <option value="<%= merchant.id %>"><%= merchant.name %></option>
+         <% end %>
+        <% end %>
+      </select>
+    </p>
+    </div>
+
+   <div class="blk">
+     <p><span class="edit-tr-label"> Expense:        
+     <select name="item_id">
+       <% @items.each do |item| %> 
+       <% if item.id ==  @transaction.item.id %>
          <option selected="selected" value="<%= item.id %>"><%= item.name %></option>
-      <% else %>
+       <% else %>
          <option value="<%= item.id %>"><%= item.name %></option>
+        <% end %>
        <% end %>
-      <% end %>
-    </select>
-
+     </select>
+     </p>
 
     <label for="amount">Amount: &#163;</label>
     <input type="number" step="any" name="amount" id="merchant_name" value="<%= @transaction.amount %>"><br>
 
+  <br>
 
-
-    <input type='submit' value="Update Transaction">
+      <div class="opt-back-tr">
+     <input type='submit' value="Update Transaction">
+  </div>
   </form>
+<br>
 
-<a href="/transactions">Back to Transactions</a> 
+</div>
 
+<br>
+   <div class="opt-back-tr">
+   <form action="/transactions">
+        <input class="opt-width" type="submit" value="Back to Transactions">
+   </form>
+   </div>
 </div>
 
 

@@ -1,12 +1,216 @@
 
-/* increase gap between table columns*/
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}   
+
+.container {
+  background-color: beige;
+  width: 100%;
+  min-height: 100%;
+  background-size: cover;
+}
+
+/* menu stuff  */
+
+
+nav {
+  height: 65px;
+  background-color: #990000;
+}
+
+
+.go-left {
+  float: left;
+  padding-left: 30px;
+}
+
+.go-right {
+  float: right;
+}
+
+nav ul {
+  padding-left: 0;
+  margin: 0;
+  list-style-type: none;
+  line-height: 65px;
+}
+
+nav ul li {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 100;
+  color: white;
+}
+
+.logo {
+  color: white;
+  line-height: 65px;
+  margin-left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+h1 {
+  color: black;
+}
+
+.center-h {
+  text-align: center;
+}
+
+
+/* Transactions table base*/
+
+
+table, td, th {
+   /* border: 1px solid black;  */
+}
+
 table {
-  border-collapse: separate;
-  border-spacing: 50px 0;
+    border-collapse: collapse;
+    width: 70%;
+   margin: auto;
 }
 
-td {
-  padding: 10px 0;
+th {
+    height: 50px;
+}
+
+.tr-table-border  {
+   /*margin-left: 50px;*/
+       border: 1px solid black;  
 }
 
 
+
+.tr-table p {
+  margin-left: 570px;
+}
+
+.tr-table, h3 {
+  text-align: center;
+}
+
+/* transactin form */
+
+form
+{
+  align:"center";
+
+}
+
+/*transaction edit*/
+.tr-edit {
+  margin: auto;
+  padding-left: 50px;
+  display: block;
+}
+
+.blk {
+  display: block;
+}
+
+
+
+/* hide date selector*/
+
+.hidden {
+  display:none;
+}
+
+/* home page styling*/
+.home {
+  padding: 150px 50px 50px 100px;
+}
+
+.home input {
+  width: 150px;
+  height: 70px;
+  background-color: gold;
+  box-shadow: 10px 10px 5px #888888;
+  font-size: 15px;
+  color: brown;
+}
+
+
+
+.date_range {
+  padding: 30px 50px 50px 250px;
+}
+
+.bt {
+  padding-left: 400px;
+}
+
+
+/*transactions new*/
+.new_data {
+  margin-left: 150px;
+}
+
+.tr_form label {
+    width:150px;
+    margin-top: 3px;
+
+    display:inline-block;
+    float:left;
+    padding:3px;
+}
+.tr_form input {
+    height:20px; 
+    width:220px; 
+    padding:5px 8px;
+}
+
+.tr_form button {margin-left:156px;}
+
+.entry {
+  padding-left: 150px;
+  margin-left: 150px;
+}
+
+.opt {
+ padding-left: 155px;
+}
+
+.opt-back {
+  padding-left: 154px;
+}
+
+.opt-back-tr {
+  padding-left: 10px;
+  width: 220px;
+}
+.opt-width {
+  width: 220px;
+}
+
+.pud {
+  padding-right: 93px;
+}
+
+.listing {
+  padding-left: 550px;
+  padding-top: 40px;
+}
+
+.specific {
+  color: green;
+}
+
+.edit-transaction {
+  padding-top: 40px;
+  padding-left: 200px;
+  margin-left: 250px;
+}
+
+.edit-tr-label {
+  margin-right: 100px;
+}

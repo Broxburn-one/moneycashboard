@@ -1,12 +1,12 @@
-<div class="content">
 
-<% @items.each do |item| %>
+ <h1 class="center-h">Expenses</h1>
+<div class="listing">
+   
+    <% @items.each do |item| %>  
+ 
+    <p> <a href="/items/<%= item.id %>">  <%= item.name %></a> </p>
 
-<a href="/items/<%= item.id %>"><%= item.name %></a><br>
-
-<% end %>
-<br>
-<br>
-<a href="/">Back</a>
-
+  <% end %>
 </div>
+
+

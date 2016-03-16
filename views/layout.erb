@@ -5,7 +5,31 @@
   <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
-<h1>Moneycashboard</h1>
-<%= yield %>
+ <div class="container">
+  <header>
+    <nav>
+      <div class="go-left">
+        <div class="logo">MONEYboard</div>
+      </div>
+
+      <div class="go-right">
+        <ul>
+          <li><a href="/">HOME</a></li>
+          <li><a href="/transactions">Transactions</a></li>
+          <li><a href="/merchants">Merchants</a></li>
+          <li><a href="/items">Items</a></li>
+        </ul>
+      </div>
+
+    </nav>
+
+  </header>
+
+
+  <%= yield %>
+</div>
 </body>
 </html>
+
+ 
+    

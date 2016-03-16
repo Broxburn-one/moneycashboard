@@ -19,7 +19,9 @@ end
 
 #INDEX
 get '/transactions' do
-  @transactions = Transaction.all
+
+    @transactions = Transaction.all(params)
+
   erb :"transactions/index"
 end
 
@@ -45,4 +47,15 @@ get '/transactions/:id/edit' do
   @items = Item.all
   erb :"transactions/edit"
 end
+
+# #FILTER BY DATE
+# get '/transactions/:date_from/:date_to' do
+#   @transactions = Transaction.by_date(:date_from, :date_to)
+#   erb :"transactions/filter"
+# end
+
+
+
+
+
 

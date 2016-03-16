@@ -1,7 +1,21 @@
+<h1 class="center-h">Do you want to edit <span class="specific"><%= @merchant.name %></span> merchant?</h1>
 
 
-<h1><%= @merchant.name %></h1>
 
-<a href="/merchants/<%= @merchant.id %>/edit">Edit Merchant</a> 
 
-<a href="/merchants">Back to Merchants</a> 
+
+<div class="home">
+
+<table style="width:50%">
+
+ <tr>
+   <td>   <form action="/merchants/<%= @merchant.id %>/edit">
+        <input type="submit" value="Edit Merchant">
+   </td> </form>
+    <td> <form action="/merchants">
+        <input type="submit" value="Back to Merchants">
+    </td> </form> 
+  </tr>
+
+</table>
+</div

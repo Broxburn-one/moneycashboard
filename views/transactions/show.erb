@@ -1,7 +1,18 @@
-<h1><%= @transaction.id %></h1>
 
 
 
-<a href="/transactions/<%= @transaction.id %>/edit">Edit Transaction</a> 
+<div class="home">
 
-<a href="/transactions">Back to Transactions</a> 
+<table style="width:50%">
+
+ <tr>
+   <td>   <form action="/transactions/<%= @transaction.id %>/edit">
+        <input type="submit" value="Edit Transaction">
+   </td> </form>
+    <td> <form action="/transactions">
+        <input type="submit" value="Back to Transactions">
+    </td> </form> 
+  </tr>
+
+</table>
+</div

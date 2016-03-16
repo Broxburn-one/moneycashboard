@@ -1,27 +1,37 @@
-<div>
+
+<h3>Add New Transactions</h3>
+<br>
+<div class="entry">
   
-<h3>Transactions: New</h3>
-  <form action="/transactions" method="post">
 
-    <label for="tr_date">Date:</label>
-    <input type="date" name="tr_date"><br>
+  <form class="tr_form" action="/transactions" method="post">
 
-    <select name="merchant_id">
-    <% @merchants.each do |merchant| %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
-    <% end %>
-    </select>
-    
-    <select name="item_id">
-    <% @items.each do |item| %>
-      <option value="<%= item.id %>"><%= item.name %></option>
-    <% end %>
-    </select>
+   <p> <label for="tr_date">Date:</label>
+    <input  type="date" name="tr_date"></p>
+
+  
+     <p><span class="pud">Merchant:</span>
+      <select name="merchant_id">
+      <% @merchants.each do |merchant| %>
+        <option value="<%= merchant.id %>"><%= merchant.name %></option>
+      <% end %>
+      </select></p>
+
+
+
+     <p><span class="pud">Expense:</span>
+      <select name="item_id">
+      <% @items.each do |item| %>
+        <option  value="<%= item.id %>"><%= item.name %></option>
+      <% end %>
+      </select></p>
 
     <label for="amount">Amount: &#163;</label>
     <input type="number" step="any" name="amount"><br>
-
-      <input type='submit' value="Register a transaction">
+    <br>
+    <div class="opt">
+      <input class="opt" type='submit' value="Register a transaction">
+    </div>
   </form>
 
 </div>

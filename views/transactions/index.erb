@@ -1,36 +1,59 @@
-<div>
-<h3>Transactions Listing</h3>
+<div class="tr-table">
+<h3>Transactions Listing </h3>
 <br>
 
-         <form action="">
-            Filter by date range (default: none):<br><br>
-            From:
-            <input type="date" name="filter"><br><br>
-            To:
-            <input type="date" name="filter" ><br><br>
-            <input type="submit"> 
-          </form>
 
-<table>
- <tr>
+
+<table class="tr-table-border">
+ <tr class="tr-table-border">
     <th>Date</th>
     <th>Item</th> 
     <th>Merchant</th>
     <th>Amount (&#163;)</th>
   </tr>
 
+
+
 <% summation = 0.00 %>
 <% @transactions.each do |transaction| %>  
-  <tr>
-    <td> <a href="/transactions/<%= transaction.id %>">  <%= transaction.tr_date %></a> </td>
-    <td><%= transaction.item.name %> </td> 
-    <td><%= transaction.merchant.name %> </td>
-    <td><%=  sprintf('%.2f', transaction.amount) %> </td>
+  <tr class="tr-table-border">
+    <td  class="tr-table-border"> <a href="/transactions/<%= transaction.id %>">  <%= transaction.date_format(transaction.tr_date) %></a> </td>
+    <td  class="tr-table-border"><%= transaction.item.name %> </td> 
+    <td  class="tr-table-border"><%= transaction.merchant.name %> </td>
+    <td  class="tr-table-border"><%=  sprintf('%.2f', transaction.amount) %> </td>
 
   </tr>
  <% summation += transaction.amount %>
+
 
 <% end %>
 </table>
 <p>Sum: &#163;  <%= sprintf('%.2f',summation) %></p>
 </div>
+
+
+<div class="date_range">
+ <form action="/transactions" method="get">
+    <label for="datefrom">Date From:</label>
+    <input type="date" name="datefrom" id="datefrom" ><br>
+
+
+    <label for="dateto">Date To:</label>
+    <input type="date" name="dateto" id="dateto"   ><br>    
+<br>
+    <input class='bt' type='submit' value="Sort by Date Range">
+  </form>
+<br>
+</div>
+  
+
+
+
+
+
+
+
+<footer>
+  
+  <br><br
+</footer>

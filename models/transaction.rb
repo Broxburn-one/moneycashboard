@@ -65,13 +65,26 @@ class Transaction
   end
 
 
-  def self.all()
-    date_from = Date.today.strftime("%Y-%m-01")  # 1st of the month
-    date_to = Date.today.strftime("%Y-%m-%d") 
+  def self.all(params)
 
-    sql = "SELECT * FROM transactions WHERE tr_date BETWEEN '#{date_from}' AND '#{date_to}' ORDER BY tr_date DESC"
+      datefrom = Date.parse(params[:datefrom]).strftime("%Y-%m-%d") if params[:datefrom]
+      dateto = Date.parse(params[:dateto]).strftime("%Y-%m-%d") if params[:dateto]
+    # datefrom = Date.parse("1920-03-01")  # 1st of the month
+    # dateto = Date.today.strftime("%Y-%m-%d") 
+      datefrom.nil? ? datefr = Date.parse("1920-03-01") : datefr = Date.parse(datefrom)
+      dateto.nil? ? datet = Date.today.strftime("%Y-%m-%d")  : datet = Date.parse(dateto)
+  
+# refactor
+
+    sql = "SELECT * FROM transactions WHERE tr_date BETWEEN '#{datefr}' AND '#{datet}' ORDER BY tr_date DESC"
+
     transaction = SqlRunner.run_sql(sql)
     result = transaction.map {  |t| Transaction.new(t)}
+
+#  find range of dates
+   #   sorted_by_date = result.sort { |a,b| a.tr_date <=> b.tr_date}
+   # puts sorted_by_date.class
+  
     return result
   end
 

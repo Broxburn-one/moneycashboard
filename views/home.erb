@@ -1,9 +1,37 @@
 
-<ul>
-  <li><a href="/merchants">View listed merchants</a></li>
-  <li><a href="/merchants/new">Add new merchants</a></li>
-  <li><a href="/items">View listed items</a></li>
-  <li><a href="/items/new">Add new items</a></li>
-  <li><a href="/transactions">View transactions</a></li>
-  <li><a href="/transactions/new">Add new transaction</a></li>
-</ul>
+
+<div class="home">
+
+<table style="width:50%">
+
+
+  <tr>
+   <td>   <form action="/transactions">
+        <input type="submit" value="View transactions">
+   </td> </form>
+    <td> <form action="/transactions/new">
+        <input type="submit" value="Add transactions">
+    </td> </form> 
+  </tr>
+
+  <tr>
+   <td>   <form action="/merchants">
+        <input type="submit" value="View Merchants">
+   </td> </form>
+    <td> <form action="/merchants/new">
+        <input type="submit" value="Add Merchants">
+    </td> </form> 
+  </tr>
+  
+  <tr>
+   <td>   <form action="/items">
+        <input type="submit" value="View Expenses">
+   </td> </form>
+
+    <td> <form action="/items/new">
+        <input type="submit" value="Add Expenses">
+    </td> </form> 
+  </tr>
+  
+</table>
+</div>
