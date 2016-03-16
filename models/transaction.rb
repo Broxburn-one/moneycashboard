@@ -74,7 +74,7 @@ class Transaction
       datefrom.nil? ? datefr = Date.parse("1920-03-01") : datefr = Date.parse(datefrom)
       dateto.nil? ? datet = Date.today.strftime("%Y-%m-%d")  : datet = Date.parse(dateto)
   
-# refactor
+# refactor this
 
     sql = "SELECT * FROM transactions WHERE tr_date BETWEEN '#{datefr}' AND '#{datet}' ORDER BY tr_date DESC"
 
@@ -102,7 +102,7 @@ class Transaction
   end
 
 
-
+#  this method wasn't used in the end.
   def self.by_date(date_from, date_to=Date.today)
 #  summation of transaction table amounts; later acc to date range
 #  first of the month Date.parse(date).strftime("01-%m-%Y")

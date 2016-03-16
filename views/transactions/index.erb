@@ -3,6 +3,22 @@
 <br>
 
 
+<div class="date_range">
+ <form action="/transactions" method="get">
+    <label for="datefrom">Date From:</label>
+    <input type="date" name="datefrom" id="datefrom" value="<%= params[:datefrom] %>"  ><br>
+
+
+    <label for="dateto">Date To:</label>
+    <input type="date" name="dateto" id="dateto" value="<%= params[:dateto] %>"  ><br>    
+<br>
+    <input class='bt' type='submit' value="Sort by Date Range">
+  </form>
+<br>
+</div>
+
+
+
 
 <table class="tr-table-border">
  <tr class="tr-table-border">
@@ -30,22 +46,6 @@
 </table>
 <p>Sum: &#163;  <%= sprintf('%.2f',summation) %></p>
 </div>
-
-
-<div class="date_range">
- <form action="/transactions" method="get">
-    <label for="datefrom">Date From:</label>
-    <input type="date" name="datefrom" id="datefrom" ><br>
-
-
-    <label for="dateto">Date To:</label>
-    <input type="date" name="dateto" id="dateto"   ><br>    
-<br>
-    <input class='bt' type='submit' value="Sort by Date Range">
-  </form>
-<br>
-</div>
-  
 
 
 

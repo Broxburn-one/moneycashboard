@@ -142,7 +142,7 @@ form
 
 
 .date_range {
-  padding: 30px 50px 50px 250px;
+  padding: 30px 50px 50px 70px;
 }
 
 .bt {
@@ -170,6 +170,9 @@ form
 }
 
 .tr_form button {margin-left:156px;}
+
+
+
 
 .entry {
   padding-left: 150px;
