@@ -5,16 +5,26 @@
 
 <div class="date_range">
  <form action="/transactions" method="get">
+  <% require 'Date' %>
     <label for="datefrom">Date From:</label>
-    <input type="date" name="datefrom" id="datefrom" value="<%= params[:datefrom] %>"  ><br>
+    <input type="date" name="datefrom" id="datefrom" value="<%= Date.parse("1999-01-01") %>"  ><br>
 
 
     <label for="dateto">Date To:</label>
-    <input type="date" name="dateto" id="dateto" value="<%= params[:dateto] %>"  ><br>    
+    <input type="date" name="dateto" id="dateto" value="<%= Date.today %>"  ><br>    
 <br>
     <input class='bt' type='submit' value="Sort by Date Range">
   </form>
 <br>
+
+ <div class="opt-back-new-tr">
+   <form action="/transactions/new">
+        <input class="opt-width" type="submit" value="Add a new transaction">
+   </form>
+   </div>
+
+
+
 </div>
 
 

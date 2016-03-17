@@ -7,7 +7,8 @@
   <form class="tr_form" action="/transactions" method="post">
 
    <p> <label for="tr_date">Date:</label>
-    <input  type="date" name="tr_date"></p>
+     <% require 'Date' %>
+    <input  type="date" name="tr_date" value="<%= Date.today %>" ></p>
 
   
      <p><span class="pud">Merchant:</span>

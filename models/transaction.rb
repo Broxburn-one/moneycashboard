@@ -71,7 +71,7 @@ class Transaction
       dateto = Date.parse(params[:dateto]).strftime("%Y-%m-%d") if params[:dateto]
     # datefrom = Date.parse("1920-03-01")  # 1st of the month
     # dateto = Date.today.strftime("%Y-%m-%d") 
-      datefrom.nil? ? datefr = Date.parse("1920-03-01") : datefr = Date.parse(datefrom)
+      datefrom.nil? ? datefr = Date.parse("1999-01-01") : datefr = Date.parse(datefrom)
       dateto.nil? ? datet = Date.today.strftime("%Y-%m-%d")  : datet = Date.parse(dateto)
   
 # refactor this

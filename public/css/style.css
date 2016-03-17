@@ -191,6 +191,11 @@ form
   padding-left: 10px;
   width: 220px;
 }
+
+.opt-back-new-tr {
+  padding-left: 410px;
+  width: 120px;  
+}
 .opt-width {
   width: 220px;
 }
